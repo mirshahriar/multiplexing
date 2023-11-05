@@ -12,9 +12,21 @@ gRPC Server is running on port 8080
 ### HTTP Call
 
 ```bash
-$ curl --location '127.0.0.1:8080/echo'
+$ curl --location --request GET '127.0.0.1:8080/echo' \
+--header 'Content-Type: application/json' \
+--data '{
+    "message": "test"
+}'
+```
+#### Response
 
-echo from HTTP!
+```json
+{
+  "from": "http",
+  "response": {
+    "message": "echo test from grpc!"
+  }
+}
 ```
 
 
@@ -22,7 +34,10 @@ echo from HTTP!
 
 ```bash
 $ grpcurl -plaintext -d '{"message": "test"}' localhost:8080 echo.EchoService/EchoMessage
+```
 
+#### Response
+```json
 {
   "message": "echo test from grpc!"
 }

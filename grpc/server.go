@@ -21,3 +21,7 @@ func NewGRPCServer() *grpc.Server {
 	reflection.Register(server)
 	return server
 }
+
+func NewGRPCHandler() proto.EchoServiceServer {
+	return &grpcServer{}
+}
