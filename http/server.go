@@ -9,7 +9,7 @@ func NewHTTPServer() *http.Server {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/echo", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("HTTP server received request")
-		_, _ = w.Write([]byte("Hello from HTTP!"))
+		_, _ = w.Write([]byte("echo from HTTP!\n"))
 	})
 
 	return &http.Server{
